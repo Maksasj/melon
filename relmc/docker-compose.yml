@@ -1,0 +1,116 @@
+version: '2'
+
+# Start all machines
+services:
+    # Proxy
+    proxy:
+        privileged: true
+        container_name: proxy
+        build: proxy
+        cap_add:
+            - NET_ADMIN
+            - NET_BROADCAST
+            - NET_RAW
+        ports:
+            - 3000:80
+    # Load balancers
+    master:
+        privileged: true
+        container_name: master
+        build: master
+        cap_add:
+            - NET_ADMIN
+            - NET_BROADCAST
+            - NET_RAW
+    backup:
+        privileged: true
+        container_name: backup
+        build: backup
+        cap_add:
+            - NET_ADMIN
+            - NET_BROADCAST
+            - NET_RAW
+    # Web machines
+    web0:
+        privileged: true
+        container_name: web0
+        build: web0
+        cap_add:
+            - NET_ADMIN
+            - NET_BROADCAST
+            - NET_RAW
+        ports:
+            - 5000:5050
+        networks:
+            default:
+                ipv4_address: 172.22.2.10
+    web1:
+        privileged: true
+        container_name: web1
+        build: web1
+        cap_add:
+            - NET_ADMIN
+            - NET_BROADCAST
+            - NET_RAW
+        ports:
+            - 5001:5050
+        networks:
+            default:
+                ipv4_address: 172.22.2.11
+    web2:
+        privileged: true
+        container_name: web2
+        build: web2
+        cap_add:
+            - NET_ADMIN
+            - NET_BROADCAST
+            - NET_RAW
+        ports:
+            - 5002:5050
+        networks:
+            default:
+                ipv4_address: 172.22.2.12
+    web3:
+        privileged: true
+        container_name: web3
+        build: web3
+        cap_add:
+            - NET_ADMIN
+            - NET_BROADCAST
+            - NET_RAW
+        ports:
+            - 5003:5050
+        networks:
+            default:
+                ipv4_address: 172.22.2.13
+    web4:
+        privileged: true
+        container_name: web4
+        build: web4
+        cap_add:
+            - NET_ADMIN
+            - NET_BROADCAST
+            - NET_RAW
+        ports:
+            - 5004:5050
+        networks:
+            default:
+                ipv4_address: 172.22.2.14
+    web5:
+        privileged: true
+        container_name: web5
+        build: web5
+        cap_add:
+            - NET_ADMIN
+            - NET_BROADCAST
+            - NET_RAW
+        ports:
+            - 5005:5050
+        networks:
+            default:
+                ipv4_address: 172.22.2.15
+
+networks:
+    default:
+        external: true
+        name: relmc_network
