@@ -113,4 +113,4 @@ services:
 networks:
     default:
         external: true
-        name: relmc_network
+        name: melon_network

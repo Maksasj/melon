@@ -10,8 +10,8 @@ RUN chmod 644 /etc/keepalived/keepalived.conf
 
 EXPOSE 80
 
-RUN mkdir -p /home/relmc
-WORKDIR /home/relmc
-COPY . /home/relmc
+RUN mkdir -p /home/melon
+WORKDIR /home/melon
+COPY . /home/melon
 
 CMD bash ./run.sh
